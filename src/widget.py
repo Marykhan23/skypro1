@@ -1,6 +1,8 @@
 import masks as masks
+from datetime import datetime
 
 def mask_account_card(number: str) -> str:
+    """Masks card or account number in any strings"""
     res = ""
     for i in number.split(" "):
         if i.isdigit():
@@ -12,11 +14,15 @@ def mask_account_card(number: str) -> str:
     res = res[:-1]
     return res
 
-print(mask_account_card("Visa Platinum 7000792289606361"))
-print(mask_account_card("Счет 73654108430135874305"))
-print(mask_account_card("Счет 73654108430135874305"))
-print(mask_account_card("MasterCard 7158300734726758"))
-print(mask_account_card("Visa Gold 5999414228426353"))
+
+def get_date(date: str) -> str:
+    """Converts datetime string to dd.mm.YYYY format"""
+    datetime_formatted = datetime.fromisoformat(date)
+    date_formatted = datetime_formatted.strftime("%d") + "." + datetime_formatted.strftime("%m") + "." + datetime_formatted.strftime("%Y")
+    return date_formatted
+
+
+
 
 
 
